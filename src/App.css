@@ -6,6 +6,92 @@
   padding: 0;
 }
 
+body,
+html {
+  height: 100vh;
+}
+
 .App {
   text-align: center;
+}
+
+.main-content {
+  grid-row: 2 / 3;
+  background: #001f3f;
+
+  position: relative;
+  overflow-y: scroll;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: 80px 1fr 80px;
+  height: 100vh;
+}
+
+.todo-section {
+  display: flex;
+  justify-content: space-evenly;
+  border: black 1px solid;
+  background-color: #0074d9;
+  height: 50px;
+  margin: 10px 20px 20px 20px;
+  border-radius: 10px;
+  width: 90%;
+  position: relative;
+  box-shadow: 4px 4px 2px;
+}
+.todoText-section {
+  width: 200px;
+  margin-top: 10px;
+}
+
+.done-button {
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 30px;
+  width: 60px;
+  box-shadow: 2px 2px black;
+}
+
+.delete-button {
+  margin-right: 10px;
+  margin-top: 10px;
+  height: 20px;
+  box-shadow: 2px 2px;
+}
+
+.Header {
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #0074d9;
+  border: black solid 2px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+h1 {
+  font-size: 22px;
+  color: #7fdbff;
+}
+
+.footer-section {
+  grid-row: 3 / 4;
+  position: relative;
+  background-color: #0074d9;
+  border: black solid 2px;
+}
+
+.input-box {
+  height: 20px;
+  border-radius: 5px;
+}
+
+.todo--pending {
+  color: #ff4136;
+}
+
+.todo--done {
+  color: black;
 }

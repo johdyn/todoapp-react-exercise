@@ -1,29 +1,55 @@
+import React from "react";
 import "./App.css";
-// import Header from "./components/Header";
+import { useState } from "react";
+import Header from "./components/Header";
+import TodoList from "./components/TodoList";
+
 function App() {
+  const [todoArray, setTodoArray] = useState([]);
+
+  function handleAddTodo(todoText) {
+    const newTodoArray = [
+      ...todoArray,
+      {
+        text: todoText,
+        isPending: true,
+      },
+    ];
+    setTodoArray(newTodoArray);
+    console.log(newTodoArray);
+  }
+  function handleToggleDone(text) {
+    const newTodoArray = todoArray.map((todo) => {
+      if (todo.text === text) {
+        return {
+          ...todo,
+          isPending: !todo.isPending,
+        };
+      } else {
+        return todo;
+      }
+    });
+    setTodoArray(newTodoArray);
+  }
+
+  function handleDeleteTodo(todoText) {
+    const newTodoArray = todoArray.filter((todo) => todo.text !== todoText);
+    setTodoArray(newTodoArray);
+  }
+
   return (
     <div className="App">
-      <header className="Header">
-        <form>
-          <input type="text" placeholder="Type a todo..." />
-          <button
-            type="submit" //onClick={addToDoClick}
-          >
-            Add
-          </button>
-        </form>
-      </header>
-      <ul>
-        <li>Go with dog</li>
-        <li>make coffee</li>
-        <li>study react</li>
-        <li>relax</li>
-      </ul>
+      <Header onAddTodo={handleAddTodo} />
+      <main className="main-content">
+        <TodoList
+          todos={todoArray}
+          onToggleDoneClick={handleToggleDone}
+          onDeleteTodo={handleDeleteTodo}
+        />
+      </main>
+      <footer className="footer-section"></footer>
     </div>
   );
 }
 
 export default App;
-
-/* <header className="header-class"></header>
-</header> */
